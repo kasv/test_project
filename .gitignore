@@ -1,0 +1,9 @@
+# IntelliJ project files
+.idea
+
+__pycache__/
+*.pyc
+*$py.class
+.cache
+logs
+*.log
