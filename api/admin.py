@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Currency, Rate, TransferHistory, User
+
+
+admin.site.register(User)
+admin.site.register(Currency)
+admin.site.register(Rate)
+admin.site.register(TransferHistory)

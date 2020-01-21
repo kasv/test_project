@@ -18,14 +18,15 @@ class Rate(models.Model):
         unique_together = (("currency_base", "currency_conversion"),)
 
     currency_base = models.ForeignKey(
-        Currency, related_name="currencies", on_delete=models.CASCADE, null=False
+        Currency, related_name="base_currency_set", on_delete=models.CASCADE, null=False
     )
     currency_conversion = models.ForeignKey(
-        Currency, related_name="currencies", on_delete=models.CASCADE, null=False
+        Currency, related_name="conversion_currency_set", on_delete=models.CASCADE, null=False
     )
     rate = models.DecimalField(
         "rate", max_digits=15, decimal_places=10, null=True, default=None
     )
+    date = models.DateField("rate date")
 
     def __str__(self):
         return f"{self.currency_base.name}-{self.currency_conversion.name}:{self.rate}"
@@ -38,14 +39,15 @@ class User(AbstractUser):
     account_currency = models.ForeignKey(Currency, related_name="currencies", on_delete=models.CASCADE, null=False)
 
     def __str__(self):
-        return f"{self.username}:{self.email},{self.account_currency.name},{self.account_balance}"
+        return self.username
+        # return f"{self.username}:{self.email},{self.account_currency.name},{self.account_balance}"
 
 
 class TransferHistory(models.Model):
     """ История переводов """
 
     id = models.AutoField(primary_key=True)
-    user_from = models.ForeignKey(User, related_name="users", on_delete=models.CASCADE, null=False)
-    user_to = models.ForeignKey(User, related_name="users", on_delete=models.CASCADE, null=False)
+    user_from = models.ForeignKey(User, related_name="user_from_set", on_delete=models.CASCADE, null=False)
+    user_to = models.ForeignKey(User, related_name="user_to_set", on_delete=models.CASCADE, null=False)
     datetime = models.DateTimeField("operation datetime", auto_now=True)
     transfer_sum = models.DecimalField("sum", max_digits=12, decimal_places=2, null=False)

@@ -1,0 +1,37 @@
+[
+  {
+    "model": "api.currency",
+    "pk": 1,
+    "fields": {
+      "name": "EUR"
+    }
+  },
+  {
+    "model": "api.currency",
+    "pk": 2,
+    "fields": {
+      "name": "USD"
+    }
+  },
+  {
+    "model": "api.currency",
+    "pk": 3,
+    "fields": {
+      "name": "GPB"
+    }
+  },
+  {
+    "model": "api.currency",
+    "pk": 4,
+    "fields": {
+      "name": "RUB"
+    }
+  },
+  {
+    "model": "api.currency",
+    "pk": 5,
+    "fields": {
+      "name": "BTC"
+    }
+  }
+]
