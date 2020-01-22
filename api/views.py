@@ -25,6 +25,7 @@ def response_invalid_data(serializer):
 
 
 class CreateUserAPIView(CreateAPIView):
+    """ добавление нового пользователя """
     model = UserModel
     permission_classes = [permissions.AllowAny]
     serializer_class = UserSerializer
@@ -45,6 +46,8 @@ class CreateUserAPIView(CreateAPIView):
 class MoneyTransferAPIView(APIView):
     """ перевод средств между пользователями с конвертацией валют """
     authentication_classes = [BasicAuthentication]
+    permission_classes = [DjangoModelPermissions]
+    queryset = TransferHistory.objects.all()
 
     def post(self, request):
         current_user = request.user
@@ -109,6 +112,7 @@ class MoneyTransferAPIView(APIView):
 
 
 class TransferHistoryAPIView(APIView):
+    """ просмотр истории операций """
     authentication_classes = [BasicAuthentication]
     permission_classes = [DjangoModelPermissions]
     queryset = TransferHistory.objects.all()
