@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  web:
+    build: .
+    command: python /opt/project/manage.py runserver --noreload 0.0.0.0:5000
+    volumes:
+      - .:/opt/project
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

@@ -25,17 +25,15 @@ SECRET_KEY = '4_mj)5o2uk66yge%33vdoi+2nb27q3nc9ukz9(!nwqlo9efw7#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = 'api.User'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 10,
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
     ]
 }
 
@@ -93,11 +91,14 @@ WSGI_APPLICATION = 'test_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test_proj',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',  # set in docker-compose.yml
-        'PORT': 5432  # default postgres port
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        # 'NAME': 'test_proj',
+        # 'USER': 'user',
+        # 'PASSWORD': 'password',
+        # 'HOST': '127.0.0.1',
+        'PORT': 5432
     }
 }
 

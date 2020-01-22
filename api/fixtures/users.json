@@ -1,0 +1,102 @@
+[
+  {
+    "model": "api.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$rSmyk7Q6HuPz$r4NkwLw3DD66FFb9dRbCFQG+ompyOVUcuV668/pB02k=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-01-21T10:02:17Z",
+      "email": "admin@www.com",
+      "balance": "0.00",
+      "currency": "EUR",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$Q0w7tynhJ5YU$r6cP+frAyW7Dj2leW1t30hl61AAx+gdjg8adpFXmff4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user1",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-01-22T07:43:56.173Z",
+      "email": "user1@www.ru",
+      "balance": "988.00",
+      "currency": "EUR",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$1DOTD2r6kVHN$mmxZ+3IjtjA6V5r2ZzKbJTGm2lNGO3swqYSenQhh/v0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user2",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-01-22T07:46:01Z",
+      "email": "user2@www.ru",
+      "balance": "111.20",
+      "currency": "GBP",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$qqoxXgOst35I$dSxejZMecBQti5jBhuQBYp/fGe4GmsCvFRE1ExUKYmo=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user3",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-01-22T07:49:30.049Z",
+      "email": "user3@www.ru",
+      "balance": "100.00",
+      "currency": "USD",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "api.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$wVy2NHp1CqN1$+zU2CloLAr+RZEccEWqrX46VOHJCYTIr5ghWeuHbYLw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user4",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-01-22T08:09:17Z",
+      "email": "user4@www.ru",
+      "balance": "1.10",
+      "currency": "RUB",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
