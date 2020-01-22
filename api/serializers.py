@@ -1,23 +1,41 @@
 import logging
 
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from .models import Currency, Rate, User, TransferHistory
+from .models import Rate
 
 logger = logging.getLogger("api.serializers")
 
 
-# class UserSerializer(ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = "__all__"
-#
-#
-# class CurrencySerializer(ModelSerializer):
-#     class Meta:
-#         model = Currency
-#         fields = "__all__"
+UserModel = get_user_model()
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = ("id", "username", "password", "email", "balance", "currency")
+        extra_kwargs = {
+            "balance": {"required": True},
+            "currency": {"required": True},
+            "email": {"required": True},
+        }
+        write_only_fields = ("password",)
+        read_only_fields = ("id",)
+
+    def create(self, validated_data):
+        user = UserModel.objects.create(
+            username=validated_data["username"],
+            email=validated_data["email"],
+            balance=validated_data["balance"],
+            currency=validated_data["currency"],
+        )
+
+        user.set_password(validated_data["password"])
+        user.save()
+
+        return user
 
 
 class RateSerializer(ModelSerializer):
@@ -32,10 +50,3 @@ class RateSerializer(ModelSerializer):
             currency_conversion_id=self.validated_data["currency_conversion"],
             defaults=self.validated_data,
         )
-
-
-# class TransferHistorySerializer(ModelSerializer):
-#     class Meta:
-#         model = TransferHistory
-#         fields = "__all__"
-        # exclude = ["id", "user_to", "user_from"]

@@ -21,7 +21,10 @@ class Rate(models.Model):
         Currency, related_name="base_currency_set", on_delete=models.CASCADE, null=False
     )
     currency_conversion = models.ForeignKey(
-        Currency, related_name="conversion_currency_set", on_delete=models.CASCADE, null=False
+        Currency,
+        related_name="conversion_currency_set",
+        on_delete=models.CASCADE,
+        null=False,
     )
     rate = models.DecimalField(
         "rate", max_digits=15, decimal_places=10, null=True, default=None
@@ -35,19 +38,28 @@ class Rate(models.Model):
 class User(AbstractUser):
     """ Пользователь системы """
 
-    account_balance = models.DecimalField("balance", max_digits=12, decimal_places=2, null=False, default=0)
-    account_currency = models.ForeignKey(Currency, related_name="currencies", on_delete=models.CASCADE, null=False)
+    balance = models.DecimalField(
+        "balance", max_digits=12, decimal_places=2, null=False, default=0
+    )
+    currency = models.ForeignKey(
+        Currency, related_name="currencies", on_delete=models.CASCADE, null=False
+    )
 
     def __str__(self):
-        return self.username
-        # return f"{self.username}:{self.email},{self.account_currency.name},{self.account_balance}"
+        return f"{self.username}: {self.balance} {self.currency.name}"
 
 
 class TransferHistory(models.Model):
     """ История переводов """
 
     id = models.AutoField(primary_key=True)
-    user_from = models.ForeignKey(User, related_name="user_from_set", on_delete=models.CASCADE, null=False)
-    user_to = models.ForeignKey(User, related_name="user_to_set", on_delete=models.CASCADE, null=False)
+    user_from = models.ForeignKey(
+        User, related_name="user_from_set", on_delete=models.CASCADE, null=False
+    )
+    user_to = models.ForeignKey(
+        User, related_name="user_to_set", on_delete=models.CASCADE, null=False
+    )
     datetime = models.DateTimeField("operation datetime", auto_now=True)
-    transfer_sum = models.DecimalField("sum", max_digits=12, decimal_places=2, null=False)
+    transfer_sum = models.DecimalField(
+        "sum", max_digits=12, decimal_places=2, null=False
+    )

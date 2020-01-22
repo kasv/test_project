@@ -1,23 +1,40 @@
 import logging
 
+from django.contrib.auth import get_user_model
+from rest_framework import permissions, status
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import DjangoModelPermissions
 
-from .models import Currency, Rate, User, TransferHistory
-# from .serializers import (
-#     CurrencySerializer,
-#     RateSerializer,
-#     UserSerializer,
-#     TransferHistorySerializer,
-# )
+from .models import TransferHistory
+
+from .serializers import UserSerializer
 
 logger = logging.getLogger("api")
 
 
 def response_invalid_data(serializer):
     return Response({"success": False, "errors": serializer.errors})
+
+
+class CreateUserAPIView(CreateAPIView):
+    model = get_user_model()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = UserSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            return response_invalid_data(serializer)
+
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+
+        return Response(
+            {"success": True}, status=status.HTTP_201_CREATED, headers=headers
+        )
 
 
 class MoneyTransferAPIView(APIView):
