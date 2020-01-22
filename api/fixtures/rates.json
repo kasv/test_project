@@ -1,0 +1,122 @@
+[
+{
+    "model": "api.rate",
+    "pk": 25,
+    "fields": {
+        "currency_base": "EUR",
+        "currency_conversion": "RUB",
+        "rate": "68.7300000000",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 26,
+    "fields": {
+        "currency_base": "EUR",
+        "currency_conversion": "USD",
+        "rate": "1.1115000000",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 27,
+    "fields": {
+        "currency_base": "EUR",
+        "currency_conversion": "GBP",
+        "rate": "0.8503000000",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 28,
+    "fields": {
+        "currency_base": "USD",
+        "currency_conversion": "EUR",
+        "rate": "0.8996851102",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 29,
+    "fields": {
+        "currency_base": "USD",
+        "currency_conversion": "RUB",
+        "rate": "61.8353576248",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 30,
+    "fields": {
+        "currency_base": "USD",
+        "currency_conversion": "GBP",
+        "rate": "0.7650022492",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 31,
+    "fields": {
+        "currency_base": "RUB",
+        "currency_conversion": "EUR",
+        "rate": "0.0145496872",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 32,
+    "fields": {
+        "currency_base": "RUB",
+        "currency_conversion": "USD",
+        "rate": "0.0161719773",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 33,
+    "fields": {
+        "currency_base": "RUB",
+        "currency_conversion": "GBP",
+        "rate": "0.0123715990",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 34,
+    "fields": {
+        "currency_base": "GBP",
+        "currency_conversion": "EUR",
+        "rate": "1.1760555098",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 35,
+    "fields": {
+        "currency_base": "GBP",
+        "currency_conversion": "RUB",
+        "rate": "80.8302951899",
+        "date": "2020-01-21"
+    }
+},
+{
+    "model": "api.rate",
+    "pk": 36,
+    "fields": {
+        "currency_base": "GBP",
+        "currency_conversion": "USD",
+        "rate": "1.3071856992",
+        "date": "2020-01-21"
+    }
+}
+]
