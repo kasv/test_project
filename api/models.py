@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 
 class Currency(models.Model):
@@ -38,8 +39,9 @@ class Rate(models.Model):
 class User(AbstractUser):
     """ Пользователь системы """
 
+    email = models.EmailField(_("email address"), blank=False, unique=True, null=False)
     balance = models.DecimalField(
-        "balance", max_digits=12, decimal_places=2, null=False, default=0
+        "balance", max_digits=12, decimal_places=2, null=False, blank=False
     )
     currency = models.ForeignKey(
         Currency, related_name="currencies", on_delete=models.CASCADE, null=False
@@ -52,6 +54,11 @@ class User(AbstractUser):
 class TransferHistory(models.Model):
     """ История переводов """
 
+    class Statuses(models.TextChoices):
+        IN_QUEUE = "IN QUEUE"
+        COMPLETE = "COMPLETE"
+        ERROR = "ERROR"
+
     id = models.AutoField(primary_key=True)
     user_from = models.ForeignKey(
         User, related_name="user_from_set", on_delete=models.CASCADE, null=False
@@ -63,3 +70,10 @@ class TransferHistory(models.Model):
     transfer_sum = models.DecimalField(
         "sum", max_digits=12, decimal_places=2, null=False
     )
+    status = models.CharField(
+        max_length=10, choices=Statuses.choices, default=Statuses.IN_QUEUE
+    )
+
+    def __str__(self):
+        return f"{self.user_from.username!r} to {self.user_to.username!r}: " \
+               f"{self.transfer_sum} {self.user_from.currency.name} - {self.status}"
