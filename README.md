@@ -57,6 +57,6 @@
 ```
 
 ## Запуск проекта
-$ `docker-compose up -d --build`
-$ `docker-compose run web python /opt/project/manage.py migrate --noinput`
-$ `docker-compose run web python /opt/project/manage.py loaddata currency users`
+- $ `docker-compose up -d --build`
+- $ `docker-compose run web python /opt/project/manage.py migrate --noinput`
+- $ `docker-compose run web python /opt/project/manage.py loaddata currency users`
